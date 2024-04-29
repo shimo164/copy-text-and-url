@@ -67,8 +67,7 @@ const sendToClipboard = async (content, plainText, tabId) => {
       plainText: plainText,
     });
   } catch (error) {
-    console.error("Error executing script or sending message:", error);
-    throw error;
+    console.log("Error executing script or sending message:", error);
   }
 };
 
@@ -78,10 +77,11 @@ const copySelectedText = (info, tab) => {
   if (!text) {
     return;
   }
+  const url = tab.url;
 
   if (info.menuItemId === 'copy-as-rich-text') {
     const html = `<a href="${url}">${text}</a>`;
-    sendToClipboard(html, text, tab.id);
+    sendToClipboard(html, `${text} - ${url}`, tab.id);
   } else if (info.menuItemId === 'copy-as-markdown-link') {
     const markdown = `[${text}](${url})`;
     sendToClipboard(null, markdown, tab.id);
@@ -89,17 +89,18 @@ const copySelectedText = (info, tab) => {
 };
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (!isValidUrl(tab.url)) {
-    return;
-  }
+  const url = tab.url;
+  if (!isValidUrl(url)) return;
+
+  const title = tab.title;
 
   switch(info.menuItemId) {
     case 'copy-title-as-rich-text':
-      const htmlText = `<a href="${tab.url}">${tab.title}</a>`;
-      sendToClipboard(htmlText, `${tab.title} - ${tab.url}`, tab.id);
+      const html = `<a href="${url}">${title}</a>`;
+      sendToClipboard(html, `${title} - $url}`, tab.id);
       break;
     case 'copy-title-as-markdown-link':
-      const markdownText = `[${tab.title}](${tab.url})`;
+      const markdownText = `[${title}](${url})`;
       sendToClipboard(null, markdownText, tab.id);
       break;
     default:
