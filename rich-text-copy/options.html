@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Extension Options</title>
-    <style>
-      #saveMessage {
-        color: green;
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Menu Options</h2>
-    <label>
-      <input type="checkbox" id="rich-text-toggle" /> Copy as Rich Text
-    </label>
-    <br />
-    <label>
-      <input type="checkbox" id="markdown-link-toggle" /> Copy as Markdown Link
-    </label>
-    <br /><br />
-    <button id="saveOptions">Save</button>
-    <div id="saveMessage"></div>
+<head>
+  <title>Extension Options</title>
+  <style>
+    #saveMessage {
+      color: green;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Menu Options</h2>
+  <label>
+    <input type="checkbox" id="selection-text-rich-text-toggle" /> Copy Selected Text as Rich Text
+  </label><br />
+  <label>
+    <input type="checkbox" id="selection-text-markdown-link-toggle" /> Copy Selected Text as Markdown Link
+  </label><br />
+  <label>
+    <input type="checkbox" id="title-rich-text-toggle" /> Copy Title as Rich Text
+  </label><br />
+  <label>
+    <input type="checkbox" id="title-markdown-link-toggle" /> Copy Title as Markdown Link
+  </label><br /><br />
+  <button id="saveOptions">Save</button>
+  <div id="saveMessage"></div>
 
-    <script src="options.js"></script>
-  </body>
+  <script src="options.js"></script>
+</body>
 </html>
