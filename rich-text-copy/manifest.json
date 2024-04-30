@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Rich Text Copy",
 	"version": "1.2",
-	"description": "Copy the selected text or the title of the tab to the clipboard as either a rich-text hyperlink or a markdown link.",
+	"description": "Copy selected text or the title of a tab to the clipboard as either a rich-text hyperlink or a markdown link.",
 	"permissions": [
 		"activeTab",
 		"contextMenus",
